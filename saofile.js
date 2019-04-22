@@ -32,6 +32,37 @@ module.exports = {
         templateDir: 'template/nuxt',
       },
     ];
+
+    actions.push({
+      type: 'move',
+      patterns: {
+        gitignore: '.gitignore',
+        '_package.json': 'package.json',
+        '_.eslintrc.js': '.eslintrc.js',
+      },
+    });
+
+    return actions;
   },
-  async completed() {},
+  async completed() {
+    this.gitInit();
+
+    await this.npmInstall({ npmClient: 'yarn' });
+
+    const isNewFolder = this.outDir !== process.cwd();
+    const cd = () => {
+      if (isNewFolder) {
+        console.log(`\t${this.chalk.cyan('cd')} ${this.outFolder}`);
+      }
+    };
+
+    console.log();
+    console.log(this.chalk.bold(`  To get started:\n`));
+    cd();
+    console.log(`\t${this.answers.pm} run dev\n`);
+    console.log(this.chalk.bold(`  To build & start for production:\n`));
+    cd();
+    console.log(`\t${this.answers.pm} run build`);
+    console.log(`\t${this.answers.pm} start`);
+  },
 };

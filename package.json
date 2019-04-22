@@ -1,0 +1,34 @@
+{
+  "name": "create-nuxt-app-ts",
+  "version": "1.0.0",
+  "description": "Create a Nuxt.js App with Typescript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/praburangki/create-nuxt-app-ts.git"
+  },
+  "keywords": [
+    "vue",
+    "nuxt",
+    "typescript"
+  ],
+  "bin": "cli.js",
+  "author": "Prabu Rangki <praburangki@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/praburangki/create-nuxt-app-ts/issues"
+  },
+  "homepage": "https://github.com/praburangki/create-nuxt-app-ts#readme",
+  "scripts": {
+    "test": "ava --verbose",
+    "test:snapshot": "ava --verbose --update-snapshots"
+  },
+  "dependencies": {
+    "cross-spawn": "^6.0.5",
+    "glob": "^7.1.3",
+    "sao": "^1.6.1",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "ava": "^1.4.1"
+  }
+}

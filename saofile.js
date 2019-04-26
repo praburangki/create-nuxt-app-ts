@@ -12,6 +12,13 @@ module.exports = {
       message: 'Project name',
       default: '{outFolder}',
     },
+    {
+      name: 'pm',
+      message: 'Choose a package manager',
+      choices: ['npm', 'yarn'],
+      type: 'list',
+      default: 'yarn'
+    }
   ],
   actions() {
     const validation = validate(this.answers.name);
@@ -47,7 +54,7 @@ module.exports = {
   async completed() {
     this.gitInit();
 
-    await this.npmInstall({ npmClient: 'yarn' });
+    await this.npmInstall({ npmClient: this.answers.pm });
 
     const isNewFolder = this.outDir !== process.cwd();
     const cd = () => {
